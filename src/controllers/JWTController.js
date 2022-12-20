@@ -5,13 +5,13 @@ exports.CreateToken=(req,res)=>{
       exp: Math.floor(Date.now() / 1000) + (30),
       data:{Name:"Rezwan",City:"Bogura",Admin:true}
    }
-   let Token=jwt.sign(Payload,"Secret12345")
+   let Token=jwt.sign(Payload,"Secret123")
    res.send(Token)
 }
 
 exports.DecodeToken=(req,res)=>{
    let Token=req.headers['token-secret']
-   jwt.verify(Token, 'Secret12345', function(err, decoded) {
+   jwt.verify(Token, 'Secret123', function(err, decoded) {
       if(err){
          res.status(401).json({status:"Invalid token",data:err})
       }else{
